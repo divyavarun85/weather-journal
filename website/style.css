@@ -1,22 +1,19 @@
 body{
-    background: #fffff8;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
-    justify-content: center;
-    grid-gap: 1em;
+    grid-auto-rows: minmax(100px, auto);
+     justify-content: stretch;
+  /*  grid-gap: 1em;*/
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+    
 }
 
 .holder{
+    align-content: center;
 
 }
 
@@ -25,7 +22,10 @@ body{
 }
 
 #entryHolder{
-
+display: flex;
+background-color: #f0d43a;
+align-items: center;
+width:100%;
 }
 
 #date{
@@ -41,10 +41,17 @@ body{
 }
 
 .headline {
+    text-align: center;
+    font-size: larger;
+    color:blue;
 
 }
 .title{
-
+margin-top: 50px;
+ align-items: center;
+ color: black;
+ font-size: x-large;
+  margin-left: 85px;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
@@ -55,34 +62,42 @@ label{
 
 input{
     display:block;
-    height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
+    height: 25px;
+    width: 250px;
+    background:lightgrey;
+    color: black;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     border: none;
 }
 
 button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
+    background-color: #4CAF50;
     border: none;
-    box-shadow: 2px 4px 5px #444;
-}
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    height: 50px;
+    margin-left:  55px;
+    margin-top: 25px;
+  }
+  
+  .button:hover {
+    background-color: green;
+  }
 h1{
     font-size: 36px;
 }
 
 textarea{
-    background:#22b2da;
-    color: #f0d43a;
+    background:lightgrey;
+    color: black;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+    height: 100px;
+    width:250px;
 }
 /* Reset style for HTML element on active to have no border*/
 input:focus,
@@ -93,19 +108,41 @@ button:focus {
 }
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
+    color: lightcoral; 
     font-family: 'Oswald', sans-serif;
 
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
+    color:lightcoral;  
     font-family: 'Oswald', sans-serif;
 
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
+    color:lightcoral; 
     font-family: 'Oswald', sans-serif;
 
 } 
+/* new features*/
+#new-features {
+    display: flex;
+    align-items: center;
+}
+#temp {
+    
+}
+#content {
+    margin-left: 70px;
+}
+
+
+form.form {
+    display: table;
+    align-items: stretch;
+    margin-left:80px;
+}
+
+div.form {
+    display: table-row;
+}
