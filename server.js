@@ -38,16 +38,24 @@ const weatherDetails =[];
 app.post('/weatherDetails',processWeather)
 
 function processWeather(req,res) {
-    //console.log(req.body);
+    console.log(req.body);
 
     newDetailsEntry = {
         Zip :req.body.Zip,
         userFeelings : req.body.userFeelings,
         Date:req.body.Date,
         Temperature :req.body.Temperature,
-        userResponse :req.body.userResponse
+        userResponse :req.body.userResponse,
+        newTemperature:req.body.newtemp,
+        newFeelslike :req.body.newfeels
     }
     weatherDetails.push(newDetailsEntry);
     res.send(weatherDetails);
     console.log(weatherDetails);
+}
+/* GET route - sending back details entered by user */
+app.get('/weatherDetails',getDetails)
+
+function getDetails(req,res){
+    res.send(Object.assign({},weatherDetails));
 }
