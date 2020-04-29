@@ -34,7 +34,7 @@ console.log('Express listening on port', this.address().port);
 
 
 
-const weatherDetails =[];
+const projectData =[];
 app.post('/weatherDetails',processWeather)
 
 function processWeather(req,res) {
@@ -49,13 +49,15 @@ function processWeather(req,res) {
         newTemperature:req.body.newtemp,
         newFeelslike :req.body.newfeels
     }
-    weatherDetails.push(newDetailsEntry);
-    res.send(weatherDetails);
-    console.log(weatherDetails);
+    projectData.push(newDetailsEntry);
+    res.send(projectData);
+    console.log(projectData);
 }
+
+
 /* GET route - sending back details entered by user */
 app.get('/weatherDetails',getDetails)
 
 function getDetails(req,res){
-    res.send(Object.assign({},weatherDetails));
+    res.send(Object.assign({},projectData));
 }

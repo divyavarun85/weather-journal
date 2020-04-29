@@ -1,11 +1,14 @@
 /* Global Variables */
 
+/*import { request } from "http";*/
+
 let baseURL = 'https://api.openweathermap.org/data/2.5/weather?';
 let apiKey = '77ed1797683c58a631efaedbb2754e77';
 
 // Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+/*let d = new Date();
+let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();*/
+
 
 
 
@@ -75,6 +78,27 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
        }
     }
    
+
+    
+      const retrieveData = async(url ="")=>{
+        const getrequest = await fetch(url);
+        try{
+          const allData = await getrequest.json();
+        /**changing Date format */           
+        const newdisplayDate = allData[0].Date;
+        let d= new Date(newdisplayDate).toDateString();
+          
+          document.getElementById('display-date').innerHTML = d;
+          document.getElementById('user-input').innerHTML = allData[0].userResponse;
+        }
+        catch(error){
+          console.log("error", error);
+        }
+      } 
+
+
+
+
     /**Button event listener function */
     function performAction(e){
         const zip = document.getElementById("zip").value;
@@ -90,7 +114,8 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
           const FetchedTemp =  document.getElementById('display-tempe').innerText;
           const fetchedFeelsLike = document.getElementById('display_feelslike').innerText;
           postFetchedData('/weatherDetails',{ Zip : zip,userFeelings :feelings,Date :date, Temperature:temp , userResponse:irresponse,newtemp:FetchedTemp,newfeels:fetchedFeelsLike} );
-          });
+          })
+          .then(retrieveData('/weatherDetails'));
           
       }
 
