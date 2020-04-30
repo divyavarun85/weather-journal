@@ -49,9 +49,8 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();*/
             body: JSON.stringify(data),
         })
       try{
-            const newfetchedData = await resFetchedData.json();
-            // console.log(newData);
-            return newfetchedData
+            const newfetchedData = resFetchedData.status;
+            return newfetchedData;
             } catch(error){
             console.log("i am error", error);
             }   
@@ -66,6 +65,7 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();*/
    /**Get weather details from weather API */
      const getweatherDetails = async(baseURL,zip,apiKey)=>{
       const getresponse = await fetch(baseURL+'q='+zip+'&appid='+apiKey);    
+      //const getData = await fetch(baseURL+'q='+zip+'&appid='+apiKey);
              try{
                const getData = await getresponse.json();
                const newTemperature =Math.round(1.8*((getData.main.temp)-273)+32);
@@ -81,19 +81,20 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();*/
 
     
       const retrieveData = async(url ="")=>{
-        const getrequest = await fetch(url);
+        var getrequest = await fetch(url);
+        
         try{
-          const allData = await getrequest.json();
-        /**changing Date format */           
-        const newdisplayDate = allData[0].Date;
-        let d= new Date(newdisplayDate).toDateString();
-          
-          document.getElementById('display-date').innerHTML = d;
-          document.getElementById('user-input').innerHTML = allData[0].userResponse;
+         var allData = await getrequest.json();
+          console.log(allData);
+          document.getElementById('display-date').innerHTML = allData.Date;
+          document.getElementById('user-input').innerHTML = allData.userResponse;
+       }
+          catch(error){
+            console.log("i am error", error);
         }
-        catch(error){
-          console.log("error", error);
-        }
+        
+      
+        
       } 
 
 
@@ -113,15 +114,16 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();*/
         getweatherDetails(baseURL,zip,apiKey).then(function(){
           const FetchedTemp =  document.getElementById('display-tempe').innerText;
           const fetchedFeelsLike = document.getElementById('display_feelslike').innerText;
-          postFetchedData('/weatherDetails',{ Zip : zip,userFeelings :feelings,Date :date, Temperature:temp , userResponse:irresponse,newtemp:FetchedTemp,newfeels:fetchedFeelsLike} );
+          postFetchedData('/weatherDetails',{ Zip :zip,userFeelings :feelings,Date :date, Temperature:temp , userResponse:irresponse,newtemp:FetchedTemp,newfeels:fetchedFeelsLike} );
           })
-          .then(retrieveData('/weatherDetails'));
-          
+          .then(function(){
+            (retrieveData('/weatherDetails'));
+          });
       }
 
     
-    
-    
+   
   
      
+      
       

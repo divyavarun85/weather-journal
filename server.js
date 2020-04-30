@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-const projectData = {};
+/*const projectData = {};*/
 /* Fetchn */
 const fetch = require("node-fetch");
 // Require Express to run server and routes
@@ -50,7 +50,7 @@ function processWeather(req,res) {
         newFeelslike :req.body.newfeels
     }
     projectData.push(newDetailsEntry);
-    res.send(projectData);
+    res.send(200);
     console.log(projectData);
 }
 
@@ -59,5 +59,7 @@ function processWeather(req,res) {
 app.get('/weatherDetails',getDetails)
 
 function getDetails(req,res){
-    res.send(Object.assign({},projectData));
+    
+    res.send(projectData[(projectData.length-1)]);
+    console.log(projectData[(projectData.length-1)]);
 }
