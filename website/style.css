@@ -1,43 +1,66 @@
 body{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 200;
 }
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(100px, auto);
-     justify-content: stretch;
-  /*  grid-gap: 1em;*/
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    grid-template-rows: 200px 450x 50px 50px;;
+    grid-template-columns: 150 150px 150px;
+    grid-template-areas: "hd hd hd hd hd hd hd hd "
+    "lt lt  lt  lt  rt  rt  rt  rt"
+    "lt lt  lt  lt  rt  rt  rt  rt"
+    "ft ft  ft  ft  ft  ft  ft  ft ";
+    border:solid gainsboro 1px;
     
 }
 
-.holder{
-    align-content: center;
-
+#sidebar-left {
+    grid-area: lt;
+    grid-gap: 10px;
+    border:red solid 1px;
+    background-color: lightcoral;
 }
 
-.entry{
-    background: rgba(59, 74, 107, .4);
+#sidebar-right {
+    grid-area: rt;
+    justify-content: center;
+    border:red solid 1px;
+    background-color: lightcoral;
+    
+   }
+   #header {
+    grid-area: hd;
+    width:100%;
+    height:100%;
+    text-align: center;
+    font-family: cursive;
+    border:red solid 1px;
+    font-size: 25px;
 }
+#footer {
+    grid-area: ft;
+    width:100%;
+    height:100%;
+    text-align: center;
+    font-family: cursive;
+    border:red solid 1px;
+}
+
 
 #entryHolder{
 display: flex;
-background-color: #f0d43a;
+background-color: lightcoral;
 align-items: center;
 width:100%;
 }
 
-#date{
-
-}
-
 #temp{
-
+margin-left:20px;
 }
 
-#content{
-
+#iresponse{
+margin-left:20px
 }
 
 .headline {
@@ -47,17 +70,17 @@ width:100%;
 
 }
 .title{
-margin-top: 50px;
+margin-top: 20px;
  align-items: center;
  color: black;
  font-size: x-large;
-  margin-left: 85px;
-}
+ margin-left: 250px;
+ }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
     display:block;
-    font-size: 27px;
+    font-size: 18px;
 }
 
 input{
@@ -140,7 +163,7 @@ button:focus {
 form.form {
     display: table;
     align-items: stretch;
-    margin-left:80px;
+    margin-left:50px;
 }
 
 div.form {

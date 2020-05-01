@@ -33,7 +33,7 @@ console.log('Express listening on port', this.address().port);
 }
 
 
-
+/** to post the data  */
 const projectData =[];
 app.post('/weatherDetails',processWeather)
 
@@ -55,7 +55,7 @@ function processWeather(req,res) {
 }
 
 
-/* GET route - sending back details entered by user */
+/* GET route - sending back details  */
 app.get('/weatherDetails',getDetails)
 
 function getDetails(req,res){
