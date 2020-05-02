@@ -45,6 +45,10 @@ let apiKey = '77ed1797683c58a631efaedbb2754e77';
 
   /**Get weather details from weather API */
      const getweatherDetails = async(baseURL,zip,apiKey)=>{
+       if(zip ==""){
+        alert("please enter zipcode");
+         return;
+       }else{
       const getresponse = await fetch(baseURL+'q='+zip+'&appid='+apiKey);    
       //const getData = await fetch(baseURL+'q='+zip+'&appid='+apiKey);
           try{
@@ -57,6 +61,7 @@ let apiKey = '77ed1797683c58a631efaedbb2754e77';
          catch(error){
          console.log("i am error", error);
          }
+        }
       }
    
 
@@ -65,15 +70,19 @@ let apiKey = '77ed1797683c58a631efaedbb2754e77';
       var getrequest = await fetch(url);
         
       try{
+        
          var allData = await getrequest.json();
           console.log(allData);
           var d = new Date(allData.Date).toDateString();
+          if(d=" "){
+            document.getElementById('display-date').innerHTML = " ";
+          }
           document.getElementById('display-date').innerHTML = d;
           document.getElementById('user-input').innerHTML = allData.userResponse;
         }
         catch(error){
             console.log("i am error", error);
-        }       
+         }       
       } 
 
 
