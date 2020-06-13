@@ -1,6 +1,8 @@
+import {apiKey} from './apikey';
+
 /**API credential */
 let baseURL = 'https://api.openweathermap.org/data/2.5/weather?';
-let apiKey = '77ed1797683c58a631efaedbb2754e77';
+let apiKey = 'apiKey';
 
   /*POST DATA (user entered only) to server*/
     const postData = async ( url = '', data = {})=>{
